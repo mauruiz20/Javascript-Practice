@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD API REST FETCH</title>
+</head>
+<body>
+  <h1>CRUD API REST FETCH</h1>
+  <section class="crud">
+    <article>
+      <h2 class="crud-tittle">
+        <form class="crud-form">
+          <input type="text" name="nombre" placeholder="nombre" required />
+          <br>
+          <input type="text" name="constelacion" placeholder="constelación" required />
+          <br>
+          <input type="submit" value="Enviar" />
+          <input type="hidden" name="id"/>
+        </form>
+      </h2>
+    </article>
+    <article>
+      <h2>Ver Santos</h2>
+      <table class="crud-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Constelación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+        <template id="crud-template">
+          <tr>
+            <td class="name"></td>
+            <td class="constellation"></td>
+            <td>
+              <button class="edit">Editar</button>
+              <button class="delete">Eliminar</button>
+            </td>
+          </tr>
+        </template>
+      </table>
+    </article>
+  </section>
+  <script src="./js/apiRestCrud.js"></script>
+</body>
+</html>
