@@ -21,7 +21,7 @@ const ajax = (options) => {
     }
   });
   xhr.open(method || "GET", url);
-  xhr.setRequestHeader("Content-type", "application/json; charset=utf-9");
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
   xhr.send(JSON.stringify(data));
 };
 
