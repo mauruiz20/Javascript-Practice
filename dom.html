@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios del DOM</title>
+  </head>
+  <body>
+    <style>
+      :root {
+        --main-font: sans-serif;
+        --font-size: 16px;
+        --main-color: #f7df1e;
+        --second-color: #222;
+        --main-modal-color: rgba(247, 222, 30, 0.85);
+        --second-modal-color: rgba(34, 34, 34, 0.85);
+        --container-width: 1200px;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-family: var(--main-font);
+        font-size: var(--font-size);
+        scroll-behavior: smooth;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .flex-row-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* **********     Network Status     ********** */
+      .online,
+      .offline {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        background-color: #1b5e20;
+        color: #fff;
+      }
+
+      .offline {
+        background-color: #b71c1c;
+      }
+
+      /* **********     ContactForm Validations     ********** */
+      .contact-form {
+        --form-ok-color: #4caf50;
+        --form-error-color: #f44336;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+      }
+
+      .contact-form > * {
+        padding: 0.5rem;
+        margin: 1rem auto;
+        display: block;
+        width: 100%;
+      }
+
+      .contact-form textarea {
+        resize: none;
+      }
+
+      .contact-form legend,
+      .contact-form-response {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 1rem;
+        font-family: sans-serif;
+      }
+
+      .contact-form input[type="submit"] {
+        width: 50%;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .contact-form *::placeholder {
+        color: #000;
+      }
+
+      .contact-form [required]:valid {
+        border: thin solid var(--form-ok-color);
+      }
+
+      .contact-form [required]:invalid {
+        border: thin solid var(--form-error-color);
+      }
+
+      .contact-form-error {
+        margin-top: -1rem;
+        font-size: 80%;
+        background-color: var(--form-error-color);
+        color: #fff;
+        transition: all 800ms ease;
+      }
+
+      .contact-form-error.is-active {
+        display: block;
+        animation: show-message 1s 1 normal 0s ease-out both;
+      }
+
+      .none {
+        display: none;
+      }
+
+      @keyframes show-message {
+        0% {
+          visibility: hidden;
+          opacity: 0;
+        }
+
+        100% {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    </style>
+    <h2>Detección de dispositivos User Agent</h2>
+    <div id="user-device"></div>
+    <script type="module" src="js/index_dom.js"></script>
+
+    <h2>Detección de la conexión</h2>
+
+    <p>Desconecta y conecta el internet para ver la detección</p>
+
+    <h2>Validaciones de Formulario</h2>
+    <form
+      class="contact-form"
+      action="https://formsubmit.co/ruizmauricio012@gmail.com"
+      method="POST"
+      target="_blank"
+    >
+      <legend>Envíanos tus comentarios</legend>
+      <input
+        type="text"
+        name="name"
+        placeholder="Escribe tu nombre"
+        title="El nombre solo acepta letras y espacios en blanco"
+        pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Escribe tu email"
+        title="Email incorrecto"
+        pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+        required
+      />
+      <input
+        type="text"
+        name="subject"
+        title="El asunto es requerido"
+        placeholder="Asunto a tratar"
+        required
+      />
+      <textarea
+        name="comments"
+        cols="50"
+        rows="5"
+        placeholder="Escribe tus comentarios"
+        title="Tu comentario no debe exceder los 255 caracteres"
+        data-pattern="^.{1,255}$"
+        required
+      ></textarea>
+      <input type="submit" value="Enviar" />
+      <div class="contact-form-loader none">
+        <img src="assets/puff.svg" alt="Cargando" />
+      </div>
+      <div class="contact-form-response none">
+        <p>Los datos han sido enviados</p>
+      </div>
+    </form>
+  </body>
+</html>
