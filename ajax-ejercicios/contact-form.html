@@ -4,25 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ejercicios del DOM</title>
-    <link rel="stylesheet" href="css/dom.css" />
+    <link rel="stylesheet" href="../css/dom.css" />
+    <title>Envío de Formulario con Fetch y FormSubmit</title>
   </head>
   <body>
-    <h2>Detección de dispositivos User Agent</h2>
-    <div id="user-device"></div>
-    <script type="module" src="js/index_dom.js"></script>
-
-    <h2>Detección de la conexión</h2>
-
-    <p>Desconecta y conecta el internet para ver la detección</p>
-
-    <h2>Validaciones de Formulario</h2>
-    <form
-      class="contact-form"
-      action="https://formsubmit.co/ruizmauricio012@gmail.com"
-      method="POST"
-      target="_blank"
-    >
+    <form class="contact-form">
       <legend>Envíanos tus comentarios</legend>
       <input
         type="text"
@@ -58,11 +44,12 @@
       ></textarea>
       <input type="submit" value="Enviar" />
       <div class="contact-form-loader none">
-        <img src="assets/puff.svg" alt="Cargando" />
+        <img src="../assets/puff.svg" alt="Cargando" />
       </div>
       <div class="contact-form-response none">
         <p>Los datos han sido enviados</p>
       </div>
     </form>
+    <script src="assets/contact-form.js"></script>
   </body>
 </html>
